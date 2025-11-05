@@ -1,0 +1,111 @@
+Name:             dvwa-69b9ff5bd5-k4kp9
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Tue, 04 Nov 2025 18:38:02 +0000
+Labels:           app=dvwa
+                  pod-template-hash=69b9ff5bd5
+Annotations:      kubectl.kubernetes.io/restartedAt: 2025-11-04T18:38:02Z
+Status:           Running
+IP:               10.244.0.6
+IPs:
+  IP:           10.244.0.6
+Controlled By:  ReplicaSet/dvwa-69b9ff5bd5
+Containers:
+  dvwa:
+    Container ID:   docker://cf1891ee8ed84bed679c399c7fdcb0e3a2e1d1da8cba27182494528ceba6818b
+    Image:          vulnerables/web-dvwa:latest
+    Image ID:       docker-pullable://vulnerables/web-dvwa@sha256:dae203fe11646a86937bf04db0079adef295f426da68a92b40e3b181f337daa7
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Tue, 04 Nov 2025 18:38:08 +0000
+    Ready:          True
+    Restart Count:  0
+    Readiness:      http-get http://:80/ delay=10s timeout=1s period=5s #success=1 #failure=3
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-vcnk8 (ro)
+      /var/www/html/config/config.inc.php from dvwa-config-volume (rw,path="config.inc.php")
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  dvwa-config-volume:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      dvwa-config
+    Optional:  false
+  kube-api-access-vcnk8:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>
+
+
+Name:             mysql-8567dfc99-bgpx5
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             minikube/192.168.49.2
+Start Time:       Tue, 04 Nov 2025 16:14:47 +0000
+Labels:           app=mysql
+                  pod-template-hash=8567dfc99
+Annotations:      <none>
+Status:           Running
+IP:               10.244.0.3
+IPs:
+  IP:           10.244.0.3
+Controlled By:  ReplicaSet/mysql-8567dfc99
+Containers:
+  mysql:
+    Container ID:   docker://02ad6f7b0a7b7a19f2393166b5fa1a647e3e3e0eb41aa8243dd591e8e3c61b91
+    Image:          mysql:5.7
+    Image ID:       docker-pullable://mysql@sha256:4bc6bc963e6d8443453676cae56536f4b8156d78bae03c0145cbe47c2aad73bb
+    Port:           3306/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Tue, 04 Nov 2025 16:21:06 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:
+      MYSQL_ROOT_PASSWORD:  root
+      MYSQL_DATABASE:       dvwa
+      MYSQL_USER:           dvwa
+      MYSQL_PASSWORD:       dvwa
+    Mounts:
+      /var/lib/mysql from mysql-data (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-8nfvf (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  mysql-data:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  mysql-pvc
+    ReadOnly:   false
+  kube-api-access-8nfvf:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>

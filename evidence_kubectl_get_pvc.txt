@@ -1,0 +1,2 @@
+NAME        STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE   VOLUMEMODE
+mysql-pvc   Bound    pvc-b788fe5e-191e-4226-8870-8ab6b50af7db   1Gi        RWO            standard       <unset>                 23h   Filesystem

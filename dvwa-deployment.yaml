@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dvwa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dvwa
+  template:
+    metadata:
+      labels:
+        app: dvwa
+    spec:
+      containers:
+      - name: dvwa
+        image: vulnerables/dvwa:latest
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        volumeMounts:
+        - name: dvwa-config-volume
+          mountPath: /var/www/html/config/config.inc.php
+          subPath: config.inc.php
+      volumes:
+      - name: dvwa-config-volume
+        configMap:
+          name: dvwa-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dvwa
+spec:
+  selector:
+    app: dvwa
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30080

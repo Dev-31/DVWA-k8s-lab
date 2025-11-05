@@ -1,0 +1,4 @@
+NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE   SELECTOR
+dvwa         NodePort    10.111.85.231   <none>        80:30080/TCP   23h   app=dvwa
+kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP        23h   <none>
+mysql        ClusterIP   None            <none>        3306/TCP       23h   app=mysql

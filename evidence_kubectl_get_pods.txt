@@ -1,0 +1,3 @@
+NAME                    READY   STATUS    RESTARTS   AGE   IP           NODE       NOMINATED NODE   READINESS GATES
+dvwa-69b9ff5bd5-k4kp9   1/1     Running   0          20h   10.244.0.6   minikube   <none>           <none>
+mysql-8567dfc99-bgpx5   1/1     Running   0          23h   10.244.0.3   minikube   <none>           <none>
