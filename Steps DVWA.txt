@@ -1,0 +1,28 @@
+Step 1: Start minikube 
+minikube start --driver=docker
+
+Step 2: Create working folder and switch to it
+mkdir -p ~/dvwa-k8s && cd ~/dvwa-k8s
+
+Step 3: Apply the Kubernetes manifests
+kubectl apply -f mysql-deployment.yaml
+kubectl apply -f dvwa-configmap.yaml
+kubectl apply -f dvwa-deployment.yaml
+
+Step 4: Wait & check pod status
+kubectl get pods --watch
+
+Step 5: Accessing DVWA login page
+minikube ip
+http://192.168.49.2:30080/
+
+Step 6: Login using credentials
+Username: admin
+Password: password
+
+Step 7: If error then go to http://192.168.49.2:30080/setup.php
+Check for the status check
+create/reset Database
+
+Step 8: Attack
+Start with your favourite attacks.
